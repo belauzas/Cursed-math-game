@@ -21,12 +21,64 @@ body * {
     .container > .layer.visible {
         display: inline-block;
     }
+    .container > .layer.shadow-black {
+        animation: blackShadowAlert 0.5s linear;
+    }
+    @keyframes blackShadowAlert {
+        0% {box-shadow: inset 0 0 8vmin #8880;}
+        50% {box-shadow: inset 0 0 8vmin #888;}
+        100% {box-shadow: inset 0 0 8vmin #8880;}
+    }
+    .container > .layer.shadow-red {
+        animation: redShadowAlert 0.5s linear;
+    }
+    @keyframes redShadowAlert {
+        0% {box-shadow: inset 0 0 8vmin #f000;}
+        50% {box-shadow: inset 0 0 8vmin #f00;}
+        100% {box-shadow: inset 0 0 8vmin #f000;}
+    }
 
 #main_screen {
     background-image: url(../img/background/backgroundColorForest.png);
     background-position: center;
     background-size: cover;
 }
+#game {
+    background-image: url(../img/background/backgroundEmpty.png);
+    background-position: center;
+    background-size: cover;
+}
+    #game > .tiles {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vmin;
+        height: 80vmin;
+    }
+        #game > .tiles > .tile {
+            display: inline-block;
+            width: calc(100% / 9);
+            height: calc(100% / 9);
+            padding: 3px;
+            position: relative;
+        }
+            #game > .tiles > .tile > img {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+            }
+            #game > .tiles > .tile::after {
+                display: inline-block;
+                content: attr(data-exercise);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #3338;
+                font-size: 4vmin;
+            }
 
 h1 {
     position: absolute;
